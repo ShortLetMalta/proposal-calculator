@@ -18,7 +18,7 @@ cd "$PROJECT_ROOT"
 cat <<INFO
 Servendo la cartella "$PROJECT_ROOT" tramite HTTP.
 URL: http://localhost:${PORT}/index.html
-(Per l'archivio: http://localhost:${PORT}/pages/archivio/index.html#api=https://eleva-malta-calculator-backend.onrender.com)
+(Per l'archivio: http://localhost:${PORT}/pages/archivio/index.html#api=https://proposal-calculator-v5y7.onrender.com)
 Premi CTRL+C per fermare il server.
 INFO
 

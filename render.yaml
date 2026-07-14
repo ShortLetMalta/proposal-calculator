@@ -1,6 +1,6 @@
 services:
   - type: web
-    name: eleva-malta-calculator-backend
+    name: proposal-calculator
     runtime: node
     buildCommand: npm install && cd backend && npm install && npx prisma generate
     preDeployCommand: cd backend && npx prisma migrate deploy
@@ -13,13 +13,4 @@ services:
     healthCheckPath: /_health
     autoDeploy: true
 
-  - type: web
-    name: eleva-malta-calculator-frontend
-    runtime: static
-    buildCommand: echo "Static site ready"
-    staticPublishPath: ./
-    autoDeploy: true
-
-# Frontend is served as a static site from the repo root (index.html + friends).
-# Pattern matches Owner Value's calcolatore-prospetti setup, which uses the
-# same two-service split (Node backend + static frontend).
+# The frontend is published by GitHub Pages from the repository root.

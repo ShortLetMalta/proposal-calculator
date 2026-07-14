@@ -74,7 +74,7 @@ const readPct = (id, fallback) => {
 
 // Eleva Malta production API. It can still be overridden with
 // window.CALCOLATORE_API or the ?api=/#api= URL parameter.
-const DEFAULT_PROD_API = 'https://eleva-malta-calculator-backend.onrender.com';
+const DEFAULT_PROD_API = 'https://proposal-calculator-v5y7.onrender.com';
 const LOCAL_API = 'http://localhost:3001';
 
 const sanitizeBaseUrl = value => {

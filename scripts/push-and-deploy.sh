@@ -2,7 +2,7 @@
 # Simple helper: commit any changes, push to origin main, then poll render health until live.
 # Usage: ./scripts/push-and-deploy.sh "Commit message"
 MSG=${1:-"Update from local"}
-RENDER_URL=${2:-${RENDER_URL:-"https://eleva-malta-calculator-backend.onrender.com"}}
+RENDER_URL=${2:-${RENDER_URL:-"https://proposal-calculator-v5y7.onrender.com"}}
 
 # 1) commit & push
 git add -A

@@ -37,7 +37,7 @@
 })();
 
 // Prefer an explicitly set global, otherwise auto-detect and fall back between production/local
-const DEFAULT_PROD_API = 'https://eleva-malta-calculator-backend.onrender.com';
+const DEFAULT_PROD_API = 'https://proposal-calculator-v5y7.onrender.com';
 const LOCAL_API = 'http://localhost:3001';
 
 const sanitizeBaseUrl = value => {

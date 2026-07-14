@@ -29,7 +29,7 @@ npm run start:local
 ```bash
 npm run start:web
 # Si apre automaticamente http://localhost:8000/index.html (se possibile)
-# Per l'archivio: http://localhost:8000/pages/archivio/index.html#api=https://eleva-malta-calculator-backend.onrender.com
+# Per l'archivio: http://localhost:8000/pages/archivio/index.html#api=https://proposal-calculator-v5y7.onrender.com
 ```
 
 Puoi scegliere un'altra porta con `npm run start:web -- 9000`. Lo script usa `python3 -m http.server`, quindi assicurati di avere Python 3 installato (su macOS è già presente).
@@ -43,7 +43,7 @@ Replace PORT with the port printed by the previous command (or use your Render U
 npm run version:check http://localhost:PORT
 
 # Check remote (example)
-npm run version:check https://eleva-malta-calculator-backend.onrender.com
+npm run version:check https://proposal-calculator-v5y7.onrender.com
 ```
 
 The `/_version` endpoint returns the commit SHA and node runtime. The `/_links` endpoint returns the short-links config (see `backend/config/links.json`).
@@ -62,7 +62,7 @@ git commit -m "My changes"
 git push origin main
 
 # Then poll the live health endpoint yourself
-curl -s -o /dev/null -w "%{http_code}" https://eleva-malta-calculator-backend.onrender.com/_health
+curl -s -o /dev/null -w "%{http_code}" https://proposal-calculator-v5y7.onrender.com/_health
 ```
 
 Utility commands (debug)
@@ -89,13 +89,13 @@ NODE
 Check the live API for saved prospects:
 
 ```bash
-curl -s https://eleva-malta-calculator-backend.onrender.com/api/prospetti | jq
+curl -s https://proposal-calculator-v5y7.onrender.com/api/prospetti | jq
 ```
 
 Remove a temporary test prospect from the live API (replace the slug if needed):
 
 ```bash
-curl -s -X DELETE https://eleva-malta-calculator-backend.onrender.com/api/prospetti/test-salvataggio | jq
+curl -s -X DELETE https://proposal-calculator-v5y7.onrender.com/api/prospetti/test-salvataggio | jq
 ```
 
 Notes about Render and automatic commit detection
@@ -117,7 +117,7 @@ Short links and redirects
 curl -v -L http://localhost:PORT/r/proposal-calculator
 
 # Production:
-https://eleva-malta-calculator-backend.onrender.com/r/proposal-calculator
+https://proposal-calculator-v5y7.onrender.com/r/proposal-calculator
 ```
 
 Add new links

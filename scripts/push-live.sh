@@ -1,7 +1,7 @@
 #!/usr/bin/env sh
 # Commit, push and wait for live Render health and show version/links
 MSG=${1:-"Update and deploy"}
-RENDER_URL=${2:-${RENDER_URL:-"https://eleva-malta-calculator-backend.onrender.com"}}
+RENDER_URL=${2:-${RENDER_URL:-"https://proposal-calculator-v5y7.onrender.com"}}
 
 # commit & push
 git add -A

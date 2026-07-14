@@ -1,8 +1,8 @@
 {
   "proposal-calculator": {
-    "render": "https://eleva-malta-calculator-backend.onrender.com",
+    "render": "https://proposal-calculator-v5y7.onrender.com",
     "github": "https://github.com/ShortLetMalta/proposal-calculator",
-    "project_page": "https://eleva-malta-calculator-frontend.onrender.com",
+    "project_page": "https://shortletmalta.github.io/proposal-calculator/",
     "notes": "Eleva Malta proposal calculator"
   }
 }
