@@ -1,0 +1,19 @@
+services:
+  - type: web
+    name: eleva-malta-calculator-backend
+    env: node
+    buildCommand: npm install && cd backend && npm install && npx prisma generate
+    startCommand: cd backend && node app.js
+    envVars:
+      - key: NODE_VERSION
+        value: 22.x
+      - key: DATABASE_URL
+        sync: false # User should provide their own (e.g. from Neon.tech)
+    healthCheckPath: /_health
+    autoDeploy: true
+
+  - type: static
+    name: eleva-malta-calculator-frontend
+    env: static
+    staticPublishPath: ./
+    autoDeploy: true

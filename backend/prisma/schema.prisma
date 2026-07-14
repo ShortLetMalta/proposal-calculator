@@ -1,0 +1,53 @@
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model Prospect {
+  id          Int      @id @default(autoincrement())
+  slug        String   @unique
+  titolo      String
+  indirizzo1  String
+  indirizzo2  String?  @default("")
+  datiJson    Json
+  pdfPath     String
+  folder      String?  @default("")
+  propertyId  Int?
+  property    Property? @relation(fields: [propertyId], references: [id], onDelete: SetNull)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model Property {
+  id           Int         @id @default(autoincrement())
+  slug         String      @unique
+  nome         String
+  indirizzo    String?
+  citta        String?
+  ownerNome    String?
+  ownerEmail   String?
+  ownerTelefono String?
+  note         String?
+  createdAt    DateTime    @default(now())
+  updatedAt    DateTime    @updatedAt
+  prospects    Prospect[]
+}
+
+model AuditLog {
+  id            Int      @id @default(autoincrement())
+  createdAt     DateTime @default(now())
+  action        String
+  slug          String?
+  propertySlug  String?
+  requestMethod String?
+  requestPath   String?
+  ip            String?
+  userAgent     String?
+  meta          Json?
+
+  @@index([createdAt], name: "AuditLog_createdAt_idx")
+}

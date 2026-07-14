@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Scheda Proprietà · Eleva Malta</title>
+  <link rel="stylesheet" href="../../style.css">
+  <link rel="stylesheet" href="../archivio/archivio.css">
+  <link rel="stylesheet" href="property.css">
+  <link rel="icon" href="../../logo-eleva.png">
+</head>
+<body>
+  <div class="topbar">
+    <a class="topbar-brand" href="../../index.html" data-append-api-link>
+      <img src="../../logo-eleva.png" alt="Eleva Malta">
+      <span class="topbar-name">Eleva Malta</span>
+    </a>
+    <nav class="topbar-nav" aria-label="Primary">
+      <a href="../../index.html" data-append-api-link data-i18n="menu.calculator">Calcolatore</a>
+      <a href="../archivio/index.html" data-append-api-link data-i18n="menu.archive">Archivio</a>
+      <a href="index.html" class="is-active" data-i18n="menu.properties">Proprietà</a>
+    </nav>
+    <div class="topbar-end" data-i18n-menu></div>
+  </div>
+  <div class="page-shell">
+    <header class="page-header">
+      <div class="header-links">
+  <a href="../archivio/index.html" data-append-api-link data-i18n="common.backToArchive">&larr; Torna all'archivio</a>
+  <a href="../../index.html" target="_blank" rel="noopener" data-append-api-link data-i18n="common.openCalculator">Apri calcolatore</a>
+      </div>
+      <h1 id="propertyTitle" data-i18n="property.newTitle">Nuova proprietà</h1>
+      <p data-i18n="property.intro">Compila i dati dell'immobile e del proprietario. Dopo il salvataggio potrai creare prospetti collegati direttamente da questa pagina.</p>
+    </header>
+
+    <section class="section">
+      <h2 data-i18n="property.sectionData">Dati proprietà</h2>
+      <div class="toolbar" style="gap:20px">
+        <div class="toolbar-group" style="flex:1 1 280px">
+          <label for="propertyName" data-i18n="property.fieldName">Nome proprietà</label>
+          <input type="text" id="propertyName" data-i18n-placeholder="property.fieldNamePh" placeholder="Es. Tigne Point 12">
+        </div>
+        <div class="toolbar-group" style="flex:1 1 220px">
+          <label for="propertySlug" data-i18n="property.fieldSlug">Slug</label>
+          <div class="toolbar-row">
+            <input type="text" id="propertySlug" data-i18n-placeholder="property.fieldSlugPh" placeholder="tigne-point-12">
+            <button class="btn btn-secondary" type="button" id="autoSlugBtn" data-i18n="calc.btnAuto">Auto</button>
+          </div>
+        </div>
+      </div>
+      <div class="toolbar" style="gap:20px">
+        <div class="toolbar-group" style="flex:1 1 320px">
+          <label for="propertyAddress" data-i18n="property.fieldAddress">Indirizzo</label>
+          <input type="text" id="propertyAddress" data-i18n-placeholder="property.fieldAddressPh" placeholder="Indirizzo completo">
+        </div>
+        <div class="toolbar-group" style="flex:1 1 220px">
+          <label for="propertyCity" data-i18n="property.fieldCity">Città</label>
+          <input type="text" id="propertyCity" data-i18n-placeholder="property.fieldCityPh" placeholder="Città">
+        </div>
+      </div>
+      <div class="toolbar" style="gap:20px">
+        <div class="toolbar-group" style="flex:1 1 220px">
+          <label for="ownerName" data-i18n="property.fieldOwnerName">Nome proprietario</label>
+          <input type="text" id="ownerName" data-i18n-placeholder="property.fieldOwnerNamePh" placeholder="Nome e cognome">
+        </div>
+        <div class="toolbar-group" style="flex:1 1 220px">
+          <label for="ownerEmail" data-i18n="property.fieldOwnerEmail">Email proprietario</label>
+          <input type="email" id="ownerEmail" placeholder="email@example.com">
+        </div>
+        <div class="toolbar-group" style="flex:1 1 220px">
+          <label for="ownerPhone" data-i18n="property.fieldOwnerPhone">Telefono proprietario</label>
+          <input type="tel" id="ownerPhone" placeholder="+356 ...">
+        </div>
+      </div>
+      <div class="toolbar-group">
+        <label for="propertyNote" data-i18n="property.fieldNote">Note interne</label>
+        <textarea id="propertyNote" data-i18n-placeholder="property.fieldNotePh" placeholder="Note utili sul proprietario o sull'immobile"></textarea>
+      </div>
+      <div class="property-actions">
+        <button class="btn" type="button" id="savePropertyBtn" data-i18n="property.btnSave">Salva proprietà</button>
+        <button class="btn btn-secondary" type="button" id="newProspectBtn" disabled data-i18n="property.btnNewProspect">Crea nuovo prospetto</button>
+        <button class="btn btn-danger" type="button" id="deletePropertyBtn" disabled data-i18n="property.btnDelete">Elimina proprietà</button>
+      </div>
+      <div id="propertyStatus" class="status"></div>
+    </section>
+
+    <section class="section">
+      <h2 data-i18n="property.sectionLinked">Prospetti collegati</h2>
+      <div id="prospectStatus" class="status"></div>
+      <div id="propertyProspects" class="archive-list"></div>
+    </section>
+  </div>
+  <script src="../../i18n.js"></script>
+  <script src="property.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      I18N.init({
+        onChange: function () {
+          if (typeof window.refreshPropertyProspects === 'function') window.refreshPropertyProspects();
+        }
+      });
+      document.title = (document.getElementById('propertyTitle')?.textContent || 'Property') + ' · Eleva Malta';
+    });
+  </script>
+</body>
+</html>

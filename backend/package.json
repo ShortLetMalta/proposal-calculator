@@ -1,0 +1,28 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "dev": "node app.js",
+    "write-commit": "sh ./scripts/write-commit.sh",
+    "migrate:deploy": "prisma migrate deploy",
+    "migrate:sqlite": "node scripts/migrate-sqlite-to-postgres.js",
+    "backup": "node scripts/backup-data.js",
+    "restore": "node scripts/restore-data.js",
+    "postinstall": "prisma generate"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@prisma/client": "^6.17.1",
+    "cors": "^2.8.5",
+    "express": "^5.1.0",
+    "dotenv": "^16.4.5",
+    "multer": "^2.0.2",
+    "pg": "^8.12.0",
+    "prisma": "^6.17.1"
+  }
+}

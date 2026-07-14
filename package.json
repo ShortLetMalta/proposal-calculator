@@ -1,0 +1,20 @@
+{
+  "name": "eleva-malta-proposal-calculator",
+  "version": "1.0.0",
+  "private": true,
+  "engines": {
+    "node": "22.x"
+  },
+  "scripts": {
+    "start": "node backend/app.js",
+    "start:local": "PORT=3001 sh ./scripts/start-local.sh",
+    "start:web": "sh ./scripts/start-web.sh",
+    "push:local": "sh ./scripts/push-local.sh",
+    "push:live": "sh ./scripts/push-live.sh",
+    "version:check": "sh ./scripts/show-version.sh",
+    "deploy:push": "sh ./scripts/push-and-deploy.sh",
+    "backup": "cd backend && npm run backup",
+    "restore": "cd backend && npm run restore --",
+    "postinstall": "cd backend && npm install --no-audit --no-fund && npm run write-commit"
+  }
+}

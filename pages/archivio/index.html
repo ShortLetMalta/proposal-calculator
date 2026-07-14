@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Archivio Proprietà · Eleva Malta</title>
+  <link rel="stylesheet" href="../../style.css">
+  <link rel="stylesheet" href="archivio.css">
+  <link rel="icon" href="../../logo-eleva.png">
+</head>
+<body>
+  <div class="topbar">
+    <a class="topbar-brand" href="../../index.html" data-append-api-link>
+      <img src="../../logo-eleva.png" alt="Eleva Malta">
+      <span class="topbar-name">Eleva Malta</span>
+    </a>
+    <nav class="topbar-nav" aria-label="Primary">
+      <a href="../../index.html" data-append-api-link data-i18n="menu.calculator">Calcolatore</a>
+      <a href="index.html" class="is-active" data-append-api-link data-i18n="menu.archive">Archivio</a>
+      <a href="../property/index.html" data-append-api-link data-i18n="menu.properties">Proprietà</a>
+    </nav>
+    <div class="topbar-end" data-i18n-menu></div>
+  </div>
+  <div class="page-shell">
+    <header class="page-header">
+      <div class="header-links">
+  <a href="../../index.html" data-append-api-link data-i18n="common.backToArchiveCalc">&larr; Torna al calcolatore</a>
+  <a href="../property/index.html" target="_blank" rel="noopener" data-append-api-link data-i18n="property.newTitle">Nuova proprietà</a>
+      </div>
+      <h1 data-i18n="archive.title">Archivio Proprietà</h1>
+      <p data-i18n="archive.intro">Seleziona una proprietà per filtrare i prospetti salvati oppure apri la scheda dedicata per gestire i dettagli dell'immobile.</p>
+      <div class="toolbar">
+        <div class="toolbar-group" style="min-width:240px">
+          <label for="propertyFilter" data-i18n="archive.labelProperty">Proprietà</label>
+          <div class="toolbar-row">
+            <select id="propertyFilter">
+              <option value="" data-i18n="archive.optionAll">Tutte le proprietà</option>
+            </select>
+            <button class="btn btn-secondary" type="button" id="openPropertyBtn" data-i18n="archive.btnOpenProperty">Apri scheda</button>
+          </div>
+        </div>
+        <div class="toolbar-group" style="min-width:220px">
+          <label for="prospectSearch" data-i18n="archive.labelSearch">Ricerca prospetti</label>
+          <input type="search" id="prospectSearch" data-i18n-placeholder="archive.searchPh" placeholder="Titolo, indirizzo o slug" autocomplete="off">
+        </div>
+        <div class="toolbar-group">
+          <label>&nbsp;</label>
+          <button class="btn btn-secondary" type="button" id="refreshArchiveBtn" data-i18n="common.refresh">Aggiorna elenco</button>
+        </div>
+      </div>
+    </header>
+
+    <section class="section" id="propertySection">
+      <div id="propertyStatus" class="status"></div>
+      <div id="propertyList" class="property-grid"></div>
+    </section>
+
+    <section class="section" id="prospectSection">
+      <h2 data-i18n="archive.sectionProspects">Prospetti salvati</h2>
+      <div id="archiveStatus" class="status"></div>
+      <div id="prospectList" class="archive-list"></div>
+    </section>
+  </div>
+  <script src="../../i18n.js"></script>
+  <script src="archivio.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      I18N.init({
+        onChange: function () {
+          if (typeof window.refreshArchive === 'function') window.refreshArchive();
+        }
+      });
+    });
+  </script>
+</body>
+</html>
