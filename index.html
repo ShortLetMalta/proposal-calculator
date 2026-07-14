@@ -250,11 +250,8 @@
           </label>
         </div>
         <div style="margin-top:8px;">
-          <label><span data-i18n="calc.s4VatMode">Regime IVA sulla commissione PM</span>
-            <select id="vatMode" onchange="calculateProfit()">
-              <option value="mgmt-fee" data-i18n="calc.s4VatMgmt">Eleva fattura il proprietario — IVA 18% standard (default)</option>
-              <option value="guest-billed" data-i18n="calc.s4VatGuest">Eleva fattura l'ospite (licenza propria) — IVA 7% turistica (da confermare col commercialista)</option>
-            </select>
+          <label><span data-i18n="calc.s4VatOwner">IVA sulla commissione fatturata al proprietario (%)</span>
+            <input type="number" id="percentualeIvaPm" value="18" min="0" max="100" step="0.1" oninput="calculateProfit()">
           </label>
         </div>
       </div>

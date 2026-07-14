@@ -805,11 +805,9 @@ function calculateProfit(){
   const pOTA = readPct('percentualeOta', 18);
   const pPM  = readPct('percentualePm', 30);
   const pCed = readPct('percentualeCedolare', 15);
-  const vatMode = (document.getElementById('vatMode')?.value || 'mgmt-fee');
-  // Malta VAT on PM commission: 18% standard rate (Eleva invoices owner for the
-  // management service) or 7% reduced tourism rate (Eleva invoices the guest
-  // directly under its own MTA licence — confirm with accountant before using).
-  const ivaPmPct = vatMode === 'guest-billed' ? 7 : 18;
+  // VAT on Eleva's management commission invoiced to the owner. It defaults to
+  // Malta's 18% standard rate but remains editable, including an explicit 0%.
+  const ivaPmPct = readPct('percentualeIvaPm', 18);
 
   const otaAffitti = lordoAffitti * (pOTA/100);
   const otaPulizie = pulizieAnnuo * (pOTA/100);

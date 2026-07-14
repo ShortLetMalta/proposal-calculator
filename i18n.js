@@ -295,9 +295,7 @@
       'calc.s4BaseOta':           'Lordo − OTA (default)',
       'calc.s4BaseCleanOta':      'Lordo − Pulizie − OTA',
       'calc.s4BaseCleanInsOta':  'Lordo − Pulizie − Assicurazione − OTA',
-      'calc.s4VatMode':           'Regime IVA sulla commissione PM',
-      'calc.s4VatMgmt':           'Eleva fattura il proprietario — IVA 18% standard (default)',
-      'calc.s4VatGuest':          'Eleva fattura l\'ospite (licenza propria) — IVA 7% turistica (da confermare col commercialista)',
+      'calc.s4VatOwner':          'IVA sulla commissione fatturata al proprietario (%)',
 
       // section 5
       'calc.s5Title':             '5) Abbonamenti',
@@ -703,9 +701,7 @@
       'calc.s4BaseOta':           'Gross − OTA (default)',
       'calc.s4BaseCleanOta':      'Gross − Cleaning − OTA',
       'calc.s4BaseCleanInsOta':  'Gross − Cleaning − Insurance − OTA',
-      'calc.s4VatMode':           'VAT regime on the PM commission',
-      'calc.s4VatMgmt':           'Eleva invoices the owner — standard 18% VAT (default)',
-      'calc.s4VatGuest':          'Eleva invoices the guest (own licence) — 7% tourism VAT (confirm with accountant)',
+      'calc.s4VatOwner':          'VAT on the commission invoiced to the owner (%)',
 
       // section 5
       'calc.s5Title':             '5) Subscriptions',
