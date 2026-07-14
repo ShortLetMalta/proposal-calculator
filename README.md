@@ -109,15 +109,15 @@ Notes about Render and automatic commit detection
 - Quando deployi una nuova versione assicurati di eseguire `npm run migrate:deploy` (o lascia che Render lo faccia in fase di build) per creare la tabella `AuditLog` e le altre migrazioni Prisma.
 
 Short links and redirects
-- The short links are stored in `backend/config/links.json`. Example key: `calcolatore-prospetti` maps to your Render URL.
+- The short links are stored in `backend/config/links.json`. The `proposal-calculator` key maps to the Malta Render services.
 - You can open the short redirect locally or in production:
 
 ```
 # Local: replace PORT
-curl -v -L http://localhost:PORT/r/calcolatore-prospetti
+curl -v -L http://localhost:PORT/r/proposal-calculator
 
 # Production:
-https://eleva-malta-calculator-backend.onrender.com/r/calcolatore-prospetti
+https://eleva-malta-calculator-backend.onrender.com/r/proposal-calculator
 ```
 
 Add new links

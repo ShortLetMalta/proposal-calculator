@@ -3,6 +3,7 @@ services:
     name: eleva-malta-calculator-backend
     runtime: node
     buildCommand: npm install && cd backend && npm install && npx prisma generate
+    preDeployCommand: cd backend && npx prisma migrate deploy
     startCommand: cd backend && node app.js
     envVars:
       - key: NODE_VERSION
@@ -12,6 +13,13 @@ services:
     healthCheckPath: /_health
     autoDeploy: true
 
-# No separate frontend service — matches Owner Value's actual production setup,
-# which only hosts the Node backend on Render. The static calculator (index.html
-# + friends) is used locally/manually, same as Owner Value's calcolatore-prospetti.
+  - type: web
+    name: eleva-malta-calculator-frontend
+    runtime: static
+    buildCommand: echo "Static site ready"
+    staticPublishPath: ./
+    autoDeploy: true
+
+# Frontend is served as a static site from the repo root (index.html + friends).
+# Pattern matches Owner Value's calcolatore-prospetti setup, which uses the
+# same two-service split (Node backend + static frontend).

@@ -9,7 +9,7 @@
   })).format(Number.isFinite(+n)?+n:0);
   const pct = n => `${Math.round(+n||0)}%`;
   const CACHE_KEY = 'elevamalta:model';
-  const DEFAULT_PROD_API = 'https://calcolatore-prospetti.onrender.com';
+  const DEFAULT_PROD_API = 'https://eleva-malta-calculator-backend.onrender.com';
   const LOCAL_API = 'http://localhost:3001';
 
   function render(m){

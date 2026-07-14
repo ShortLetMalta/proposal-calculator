@@ -1,6 +1,7 @@
 #!/usr/bin/env sh
 # Commit, push and wait for live Render health and show version/links
 MSG=${1:-"Update and deploy"}
+RENDER_URL=${2:-${RENDER_URL:-"https://eleva-malta-calculator-backend.onrender.com"}}
 
 # commit & push
 git add -A
@@ -8,13 +9,13 @@ git commit -m "$MSG" || true
 git push origin main || { echo "Push failed"; exit 2; }
 
 # read render url
-RENDER_URL=""
 if [ -f backend/config/links.json ]; then
-  RENDER_URL=$(node -e "const L=require('./backend/config/links.json'); console.log((L['calcolatore-prospetti'] && L['calcolatore-prospetti'].render) || '')")
+  CONFIGURED_URL=$(node -e "const L=require('./backend/config/links.json'); console.log((L['proposal-calculator'] && L['proposal-calculator'].render) || '')")
+  [ -n "$CONFIGURED_URL" ] && RENDER_URL="$CONFIGURED_URL"
 fi
 if [ -z "$RENDER_URL" ]; then
   echo "Render URL not found in backend/config/links.json. Provide URL as first argument or set it in that file." >&2
-  echo "Usage: ./scripts/push-live.sh 'commit message'"
+  echo "Usage: ./scripts/push-live.sh 'commit message' [https://your-render-url]"
   exit 3
 fi
 

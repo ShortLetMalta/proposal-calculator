@@ -8,3 +8,5 @@ node_modules/
 backend/node_modules/
 .playwright-mcp/
 .DS_Store
+backend/.env*
+!backend/.env.example

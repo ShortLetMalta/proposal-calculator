@@ -72,10 +72,9 @@ const readPct = (id, fallback) => {
   return Number.isFinite(val) ? val : fallback;
 };
 
-// No Eleva Malta backend is deployed yet — deliberately NOT defaulting to
-// Owner Value's live production API (https://calcolatore-prospetti.onrender.com).
-// Set window.CALCOLATORE_API, or ?api=, once Eleva Malta's own backend exists.
-const DEFAULT_PROD_API = '';
+// Eleva Malta production API. It can still be overridden with
+// window.CALCOLATORE_API or the ?api=/#api= URL parameter.
+const DEFAULT_PROD_API = 'https://eleva-malta-calculator-backend.onrender.com';
 const LOCAL_API = 'http://localhost:3001';
 
 const sanitizeBaseUrl = value => {

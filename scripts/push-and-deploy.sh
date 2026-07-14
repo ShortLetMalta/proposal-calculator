@@ -2,6 +2,7 @@
 # Simple helper: commit any changes, push to origin main, then poll render health until live.
 # Usage: ./scripts/push-and-deploy.sh "Commit message"
 MSG=${1:-"Update from local"}
+RENDER_URL=${2:-${RENDER_URL:-"https://eleva-malta-calculator-backend.onrender.com"}}
 
 # 1) commit & push
 git add -A
@@ -9,13 +10,13 @@ git commit -m "${MSG}" || true
 git push origin main || { echo "Push failed"; exit 2; }
 
 # 2) determine render URL from backend/config/links.json if present
-RENDER_URL=""
 if [ -f backend/config/links.json ]; then
-  RENDER_URL=$(node -e "console.log(require('./backend/config/links.json')['calcolatore-prospetti']?.render || '')")
+  CONFIGURED_URL=$(node -e "console.log(require('./backend/config/links.json')['proposal-calculator']?.render || '')")
+  [ -n "$CONFIGURED_URL" ] && RENDER_URL="$CONFIGURED_URL"
 fi
 if [ -z "$RENDER_URL" ]; then
   echo "Render URL not found in backend/config/links.json. Provide URL as first argument or set it in that file." >&2
-  echo "Usage: ./scripts/push-and-deploy.sh 'commit message' https://your-render-url"
+  echo "Usage: ./scripts/push-and-deploy.sh 'commit message' [https://your-render-url]"
   exit 3
 fi
 

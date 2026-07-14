@@ -1,4 +1,6 @@
-require('dotenv').config();
+// Always resolve the local env file relative to this backend. Render-provided
+// environment variables keep precedence because dotenv does not override them.
+require('dotenv').config({ path: require('path').join(__dirname, '.env') });
 
 const express = require('express');
 const cors = require('cors');
