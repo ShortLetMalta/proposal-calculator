@@ -283,7 +283,7 @@
       'calc.s3Admin':             'Amministrazione<br> (€/mese)',
       'calc.s3Water':             'Acqua<br> (€/mese)',
       'calc.s3MtaLicence':        'Licenza MTA (mensilizzata)<br> (€/mese)',
-      'calc.s3MtaLicenceNote':    'Licenza MTA: ~€130/anno per unità a Malta (~€104 a Gozo), mensilizzata qui su 12 mesi. Verifica l\'importo esatto e la cadenza di rinnovo sul sito della Malta Tourism Authority.',
+      'calc.s3MtaLicenceNote':    'Licenza MTA: ~€130/anno per unità a Malta, mensilizzata qui su 12 mesi. Verifica l\'importo esatto e la cadenza di rinnovo sul sito della Malta Tourism Authority.',
       'calc.s3AddBtn':            '+ Aggiungi costo fisso extra mensile',
 
       // section 4
@@ -371,7 +371,7 @@
       'pdf.p1Title':              'Proposta di<br>Gestione',
       'pdf.p1Subtitle':           'offerta per l\'immobile sito in',
       'pdf.p2Title':              'Perché affidarsi a <br>Eleva Malta?',
-      'pdf.p2P1':                 'Siamo una realtà specializzata nella gestione professionale degli affitti brevi turistici a Malta e Gozo.',
+      'pdf.p2P1':                 'Siamo una realtà specializzata nella gestione professionale degli affitti brevi turistici a Malta.',
       'pdf.p2P2':                 'Conosciamo in profondità il mercato locale e le dinamiche delle piattaforme di prenotazione come Airbnb e Booking: ottimizziamo annunci, pricing e revenue management per garantire il <b>massimo rendimento</b> ai proprietari.',
       'pdf.p2P3':                 'Coordiniamo <b>pulizie e biancheria</b> con partner certificati, gestiamo <b>check-in/check-out smart</b> e presidiamo ogni <b>adempimento amministrativo e fiscale</b>.',
       'pdf.p2P4':                 'Affidarvi a Eleva Malta significa una gestione completa, trasparente e orientata ai risultati: voi godete dei profitti, noi pensiamo a tutto il resto.',
@@ -691,7 +691,7 @@
       'calc.s3Admin':             'Administration<br> (€/month)',
       'calc.s3Water':             'Water<br> (€/month)',
       'calc.s3MtaLicence':        'MTA Licence (monthly-equivalent)<br> (€/month)',
-      'calc.s3MtaLicenceNote':    'MTA Licence: ~€130/year per unit in Malta (~€104 in Gozo), spread here over 12 months. Confirm the exact fee and renewal cadence with the Malta Tourism Authority.',
+      'calc.s3MtaLicenceNote':    'MTA Licence: ~€130/year per unit in Malta, spread here over 12 months. Confirm the exact fee and renewal cadence with the Malta Tourism Authority.',
       'calc.s3AddBtn':            '+ Add extra monthly fixed cost',
 
       // section 4
@@ -779,7 +779,7 @@
       'pdf.p1Title':              'Management<br>Proposal',
       'pdf.p1Subtitle':           'offer for the property located in',
       'pdf.p2Title':              'Why choose<br>Eleva Malta?',
-      'pdf.p2P1':                 'We are a company specialised in the professional management of short-term tourist rentals in Malta and Gozo.',
+      'pdf.p2P1':                 'We are a company specialised in the professional management of short-term tourist rentals in Malta.',
       'pdf.p2P2':                 'We know the local market and the dynamics of platforms like Airbnb and Booking in depth: we optimise listings, pricing and revenue management to deliver the <b>highest returns</b> to owners.',
       'pdf.p2P3':                 'We coordinate <b>cleaning and linen</b> with certified partners, handle <b>smart check-in/check-out</b> and oversee every <b>administrative and tax obligation</b>.',
       'pdf.p2P4':                 'Entrusting your property to Eleva Malta means complete, transparent, results-oriented management: you enjoy the profits, we take care of everything else.',
