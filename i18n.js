@@ -354,12 +354,12 @@
       'calc.btnUpdateReport':     'Aggiorna Report (Embed 2)',
       'calc.reportNote':          'Il report (Embed 2) si aggiorna anche in automatico ad ogni modifica.',
 
-      // OV admin
+      // Eleva admin
       'calc.ovIres':              'Aliquota Corporate Tax Malta (Ltd, effettiva %)',
-      'calc.ovComm':              'Commissione OV (annua)',
-      'calc.ovTasse':             'Tasse OV (stima corporate tax)',
-      'calc.ovNettoAnno':         'Netto OV (annuo)',
-      'calc.ovNettoMese':         'Netto OV (mensile)',
+      'calc.ovComm':              'Commissione Eleva (annua)',
+      'calc.ovTasse':             'Tasse Eleva (stima corporate tax)',
+      'calc.ovNettoAnno':         'Netto Eleva (annuo)',
+      'calc.ovNettoMese':         'Netto Eleva (mensile)',
       'calc.ovNettoNote':         'Malta applica corporate tax 35% con full imputation: refund 6/7 su utili da attività commerciale distribuiti come dividendi → carico effettivo ~5%. Il default qui assume rifusione richiesta e ottenuta; nella realtà arriva dopo la distribuzione, con un ritardo temporale. Verifica con il commercialista maltese la struttura societaria effettiva.',
 
       // toolbar / print
@@ -760,12 +760,12 @@
       'calc.btnUpdateReport':     'Update Report (Embed 2)',
       'calc.reportNote':          'The report (Embed 2) also updates automatically on every change.',
 
-      // OV admin
+      // Eleva admin
       'calc.ovIres':              'Malta Corporate Tax Rate (Ltd, effective %)',
-      'calc.ovComm':              'OV Commission (annual)',
-      'calc.ovTasse':             'OV Taxes (corporate tax estimate)',
-      'calc.ovNettoAnno':         'OV Net (annual)',
-      'calc.ovNettoMese':         'OV Net (monthly)',
+      'calc.ovComm':              'Eleva Commission (annual)',
+      'calc.ovTasse':             'Eleva Taxes (corporate tax estimate)',
+      'calc.ovNettoAnno':         'Eleva Net (annual)',
+      'calc.ovNettoMese':         'Eleva Net (monthly)',
       'calc.ovNettoNote':         'Malta charges 35% corporate tax with full imputation: a 6/7 refund on trading-income dividends brings the effective rate to ~5%. This default assumes the refund is claimed and received — in practice it lags behind the distribution. Confirm the actual company structure with a Malta accountant.',
 
       // toolbar / print
