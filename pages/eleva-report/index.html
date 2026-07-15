@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Eleva Earnings Report</title>
+  <link rel="icon" href="../../logo-eleva.png">
+  <link rel="stylesheet" href="eleva-report.css">
+</head>
+<body>
+  <div class="toolbar">
+    <a href="../../index.html" id="backLink">Back to calculator</a>
+    <button type="button" onclick="window.print()" id="printBtn">Print / Save PDF</button>
+  </div>
+  <main class="sheet">
+    <header>
+      <img src="../../logo-eleva.png" alt="Eleva Malta">
+      <div class="header-meta"><strong id="reportTitle">Eleva Earnings Report</strong><span id="reportDate"></span></div>
+    </header>
+
+    <section class="intro">
+      <p class="eyebrow" id="propertyLabel">PROPERTY</p>
+      <h1 id="propertyName">—</h1>
+      <p id="taxStructure"></p>
+    </section>
+
+    <section class="metrics">
+      <article><span id="metricCommissionLabel">Net annual commission</span><strong id="commissionNet">€0.00</strong></article>
+      <article><span id="metricProfitLabel">Profit before tax</span><strong id="profitBeforeTax">€0.00</strong></article>
+      <article class="accent"><span id="metricNetLabel">Eleva annual net</span><strong id="netAnnual">€0.00</strong></article>
+      <article><span id="metricMonthlyLabel">Eleva monthly net</span><strong id="netMonthly">€0.00</strong></article>
+    </section>
+
+    <section>
+      <h2 id="revenueTitle">Revenue and VAT</h2>
+      <div class="rows">
+        <div><span id="pmBaseLabel">PM calculation base</span><strong id="pmBase">€0.00</strong></div>
+        <div><span id="pmRateLabel">PM commission rate</span><strong id="pmRate">0%</strong></div>
+        <div><span id="commissionLabel">Commission excluding VAT</span><strong id="commissionNetRow">€0.00</strong></div>
+        <div><span id="vatLabel">VAT collected (not revenue)</span><strong id="vatCollected">€0.00</strong></div>
+        <div class="total"><span id="billedLabel">Total invoiced including VAT</span><strong id="commissionBilled">€0.00</strong></div>
+      </div>
+    </section>
+
+    <section>
+      <h2 id="costsTitle">Eleva annual costs</h2>
+      <div class="rows">
+        <div><span id="softwareLabel">Software / PMS</span><strong id="costSoftware">€0.00</strong></div>
+        <div><span id="adminLabel">Accounting and administration</span><strong id="costAdmin">€0.00</strong></div>
+        <div><span id="marketingLabel">Marketing</span><strong id="costMarketing">€0.00</strong></div>
+        <div><span id="otherLabel">Other operating costs</span><strong id="costOther">€0.00</strong></div>
+        <div class="total"><span id="operatingLabel">Total operating costs</span><strong id="operatingCosts">€0.00</strong></div>
+      </div>
+    </section>
+
+    <section>
+      <h2 id="taxTitle">Tax estimate and net earnings</h2>
+      <div class="rows">
+        <div><span id="taxBaseLabel">Profit before tax</span><strong id="taxBase">€0.00</strong></div>
+        <div><span id="taxRateLabel">Estimated tax rate</span><strong id="taxRate">0%</strong></div>
+        <div><span id="taxAmountLabel">Estimated tax</span><strong id="estimatedTax">€0.00</strong></div>
+        <div><span id="sscLabel">Class 2 SSC</span><strong id="costSsc">€0.00</strong></div>
+        <div class="grand-total"><span id="finalNetLabel">Eleva annual net</span><strong id="finalNet">€0.00</strong></div>
+      </div>
+    </section>
+
+    <footer id="disclaimer">Internal management estimate. Confirm tax and social-security treatment with a Malta accountant.</footer>
+  </main>
+  <script src="eleva-report.js"></script>
+</body>
+</html>

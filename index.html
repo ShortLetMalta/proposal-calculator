@@ -386,12 +386,20 @@
               </select>
             </label>
             <label><span data-i18n="calc.ovIres">Aliquota fiscale Eleva stimata (%)</span><input type="number" id="aliquotaCorporateMalta" value="25" min="0" max="100" step="0.1" oninput="calculateProfit()"></label>
+            <label><span data-i18n="calc.elevaSoftware">Software / PMS Eleva (annuo €)</span><input type="number" id="elevaCostoSoftware" value="0" min="0" step="1" oninput="calculateProfit()"></label>
+            <label><span data-i18n="calc.elevaAdmin">Commercialista e amministrazione (annuo €)</span><input type="number" id="elevaCostoAdmin" value="0" min="0" step="1" oninput="calculateProfit()"></label>
+            <label><span data-i18n="calc.elevaMarketing">Marketing Eleva (annuo €)</span><input type="number" id="elevaCostoMarketing" value="0" min="0" step="1" oninput="calculateProfit()"></label>
+            <label><span data-i18n="calc.elevaOther">Altri costi Eleva (annuo €)</span><input type="number" id="elevaCostoAltro" value="0" min="0" step="1" oninput="calculateProfit()"></label>
+            <label><span data-i18n="calc.elevaSsc">Class 2 SSC stimati (annuo €)</span><input type="number" id="elevaCostoSsc" value="0" min="0" step="1" oninput="calculateProfit()"></label>
           </div>
           <div class="row"><span data-i18n="calc.ovComm">Commissione Eleva (annua)</span><strong id="outputPmLordo">€ 0,00</strong></div>
+          <div class="row"><span data-i18n="calc.elevaCostsTotal">Costi operativi Eleva (annui)</span><strong class="bad" id="outputElevaCosti">€ 0,00</strong></div>
+          <div class="row"><span data-i18n="calc.elevaTaxBase">Utile Eleva prima delle tasse</span><strong id="outputElevaBaseTax">€ 0,00</strong></div>
           <div class="row"><span data-i18n="calc.ovTasse">Tasse Eleva (stima)</span><strong class="bad" id="outputPmTasse">€ 0,00</strong></div>
           <div class="row"><span data-i18n="calc.ovNettoAnno"><b>Netto Eleva (annuo)</b></span><strong style="color:green" id="outputPmNetto">€ 0,00</strong></div>
           <div class="row"><span data-i18n="calc.ovNettoMese">Netto Eleva (mensile)</span><strong id="outputPmNettoMensile">€ 0,00</strong></div>
-          <div class="note" data-i18n="calc.ovNettoNote">Self-employed: riserva modificabile basata sulle aliquote personali progressive; i contributi Class 2 non sono inclusi. Malta Ltd: il 35% è la corporate tax headline; l'eventuale shareholder refund non è anticipato nel calcolo.</div>
+          <div class="note" data-i18n="calc.ovNettoNote">Self-employed: riserva modificabile basata sulle aliquote personali progressive; inserisci i Class 2 SSC separatamente. Malta Ltd: il 35% è la corporate tax headline; l'eventuale shareholder refund non è anticipato nel calcolo.</div>
+          <button class="btn" type="button" style="width:100%;margin-top:12px" onclick="openElevaReport()" data-i18n="calc.btnElevaPdf">Apri PDF guadagni Eleva</button>
         </div>
       </div>
     </div>

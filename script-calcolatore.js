@@ -1317,12 +1317,25 @@ function calculateProfit(){
   // Class 2 SSC and any later shareholder refund are deliberately excluded.
   const elevaTaxMode = $g('elevaTaxMode')?.value || 'self-employed';
   const corporateMalta = ($g('aliquotaCorporateMalta') ? num('aliquotaCorporateMalta') : 25) / 100;
-  const ovTasse = costoPmNetto * corporateMalta;
-  const ovNetto = costoPmNetto - ovTasse;
+  const elevaCosts = {
+    software: Math.max(0, num('elevaCostoSoftware')),
+    admin: Math.max(0, num('elevaCostoAdmin')),
+    marketing: Math.max(0, num('elevaCostoMarketing')),
+    other: Math.max(0, num('elevaCostoAltro')),
+    ssc: Math.max(0, num('elevaCostoSsc')),
+  };
+  const elevaOperatingCosts = elevaCosts.software + elevaCosts.admin + elevaCosts.marketing + elevaCosts.other;
+  const elevaProfitBeforeTax = Math.max(costoPmNetto - elevaOperatingCosts, 0);
+  const ovTasse = elevaProfitBeforeTax * corporateMalta;
+  const ovNetto = elevaProfitBeforeTax - ovTasse - elevaCosts.ssc;
   const ovNettoMens = ovNetto / 12;
 
   $set('outputPmLordo', fmtEUR(costoPmNetto));
   toggleRow('outputPmLordo', costoPmNetto);
+  $set('outputElevaCosti', fmtEUR(elevaOperatingCosts));
+  toggleRow('outputElevaCosti', elevaOperatingCosts);
+  $set('outputElevaBaseTax', fmtEUR(elevaProfitBeforeTax));
+  toggleRow('outputElevaBaseTax', elevaProfitBeforeTax);
   $set('outputPmTasse', fmtEUR(ovTasse));
   toggleRow('outputPmTasse', ovTasse);
   $set('outputPmNetto', fmtEUR(ovNetto));
@@ -1385,6 +1398,21 @@ function calculateProfit(){
         totale: sicurezzaTotale
       },
       ringSetup // <-- aggiunto per il PDF
+    },
+    eleva:{
+      taxMode: elevaTaxMode,
+      taxRatePct: corporateMalta * 100,
+      commissionNet: costoPmNetto,
+      vatCollected: costoPmIva,
+      commissionBilled: costoPmTotale,
+      costs: elevaCosts,
+      operatingCosts: elevaOperatingCosts,
+      profitBeforeTax: elevaProfitBeforeTax,
+      estimatedTax: ovTasse,
+      netAnnual: ovNetto,
+      netMonthly: ovNettoMens,
+      pmBase: basePM,
+      pmRatePct: pPM,
     },
   risultati:{ utileLordo: lordoTotale - (costoOTA + costoPmTotale + pulizieAnnuo + utenze + kitAnnuo + assicurazioneAnnuo + sicurezzaTotale),
                 utileNetto: utileAnn,
@@ -1550,6 +1578,12 @@ function saveToReport(model){
     window.dispatchEvent(new Event('storage'));
   }catch(e){ console.error('Storage error', e); }
 }
+
+function openElevaReport(){
+  try{ calculateProfit(); }catch(err){ console.warn('Unable to refresh Eleva report data', err); }
+  window.open('pages/eleva-report/index.html', '_blank', 'noopener');
+}
+window.openElevaReport = openElevaReport;
 
 function gatherFormValues(){
   const root = document.getElementById('calculatorRoot');

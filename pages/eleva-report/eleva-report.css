@@ -1,0 +1,11 @@
+:root{--gold:#c9a96e;--ink:#172033;--muted:#64748b;--line:#e2e8f0;--paper:#fff;--bg:#eef1f5}
+*{box-sizing:border-box} body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.45 Inter,system-ui,-apple-system,Segoe UI,sans-serif}
+.toolbar{max-width:900px;margin:18px auto 0;display:flex;justify-content:space-between;align-items:center;padding:0 12px}.toolbar a{color:var(--ink);font-weight:700}.toolbar button{border:0;border-radius:10px;background:var(--gold);color:#fff;padding:11px 16px;font-weight:800;cursor:pointer}
+.sheet{width:min(900px,calc(100% - 24px));margin:14px auto 28px;background:var(--paper);padding:44px 52px;box-shadow:0 12px 35px #0f172a18;border-radius:14px}
+header{display:flex;justify-content:space-between;align-items:center;border-bottom:2px solid var(--gold);padding-bottom:20px}header img{height:30px;width:auto}.header-meta{display:flex;flex-direction:column;text-align:right}.header-meta span{color:var(--muted);font-size:13px}
+.intro{padding:26px 0 12px}.eyebrow{margin:0;color:var(--gold);font-size:12px;font-weight:900;letter-spacing:.16em}.intro h1{font-size:32px;margin:3px 0}.intro p:last-child{margin:0;color:var(--muted)}
+.metrics{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin:12px 0 28px}.metrics article{border:1px solid var(--line);border-radius:12px;padding:14px 16px;display:flex;flex-direction:column}.metrics span{color:var(--muted);font-size:13px}.metrics strong{font-size:24px;margin-top:3px}.metrics .accent{border:2px solid var(--gold);background:#fffaf0}
+section{break-inside:avoid}h2{font-size:18px;margin:23px 0 8px}.rows{border-top:1px solid var(--line)}.rows>div{display:flex;justify-content:space-between;gap:20px;padding:8px 2px;border-bottom:1px solid var(--line)}.rows span{color:#334155}.rows .total{font-weight:800}.rows .grand-total{background:var(--ink);color:#fff;margin-top:5px;padding:12px 14px;border-radius:8px}.rows .grand-total span{color:#fff}.rows .grand-total strong{font-size:19px}
+footer{margin-top:26px;padding-top:14px;border-top:1px solid var(--line);color:var(--muted);font-size:11px}
+@media(max-width:640px){.sheet{padding:28px 22px}.metrics{grid-template-columns:1fr}.intro h1{font-size:26px}}
+@media print{body{background:#fff}.toolbar{display:none}.sheet{width:auto;margin:0;padding:8mm 10mm;box-shadow:none;border-radius:0}@page{size:A4;margin:8mm}}
