@@ -72,6 +72,13 @@ const readPct = (id, fallback) => {
   return Number.isFinite(val) ? val : fallback;
 };
 
+function handleOwnerTaxModeChange(){
+  const mode = document.getElementById('ownerTaxMode')?.value || 'article-31d';
+  const rate = document.getElementById('percentualeCedolare');
+  if(rate && mode === 'article-31d') rate.value = '15';
+  calculateProfit();
+}
+
 // Eleva Malta production API. It can still be overridden with
 // window.CALCOLATORE_API or the ?api=/#api= URL parameter.
 const DEFAULT_PROD_API = 'https://proposal-calculator-v5y7.onrender.com';
@@ -1212,9 +1219,11 @@ function calculateProfit(){
     scheduleExtrasMirror();
   }catch(e){ console.warn('extras container scheduling failed', e); }
 
-  // 7) Base imponibile & imposta cedolare
-  // Cedolare secca su netto: Lordo Totale - Pulizie - Assicurazione - OTA - Costo PM
-  const baseCedolare = Math.max(lordoTotale - pulizieAnnuo - assicurazioneAnnuo - costoOTA - costoPmTotale, 0);
+  // 7) Owner tax base and estimated tax. Malta's Article 31D final tax is
+  // calculated on gross rental income. Custom owner rates use the same gross
+  // base in this proposal model, without deducting OTA, PM or operating costs.
+  const ownerTaxMode = document.getElementById('ownerTaxMode')?.value || 'article-31d';
+  const baseCedolare = Math.max(lordoTotale, 0);
   const imposta = baseCedolare * (pCed/100);
   // Exclude one-time startup security costs from annual operating costs
   const costiOperativi = costoOTA + costoPmTotale + pulizieAnnuo + utenze + kitAnnuo + assicurazioneAnnuo + sicurezzaRicorrente;
@@ -1241,6 +1250,7 @@ function calculateProfit(){
       costoPmTotale,
       lordoTotale,
       baseCedolare,
+      ownerTaxMode,
       percentualeCedolare: pCed,
       imposta,
       utenze,
