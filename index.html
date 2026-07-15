@@ -140,12 +140,13 @@
           <label><span data-i18n="calc.s2aKit">Welcome kit per soggiorno (€)</span>
             <input type="number" id="kitPerSoggiorno" value="5" min="0" step="1" oninput="calculateProfit()">
           </label>
-          <label><span data-i18n="calc.s2aIns">Assicurazione per prenotazione</span>
+          <label><span data-i18n="calc.s2aIns">Protezione per prenotazione con guest screening Truvi</span>
             <select id="assicurazionePerSoggiorno" onchange="calculateProfit()">
               <option value="0" data-plan="Senza assicurazione" data-i18n="calc.insNone">— Nessuna assicurazione —</option>
-              <option value="20.10" data-plan="Screening + Protezione danni (fino a €500)" data-i18n="calc.insScreening">Screening + Protezione danni (fino a €500) — €20,10 / prenotazione</option>
-              <option value="28.75" data-plan="Protezione danni (fino a €50K)" data-i18n="calc.insDamage">Protezione danni (fino a €50K) — €28,75 / prenotazione</option>
+              <option value="20.10" data-plan="Truvi Guest Screening + Protezione danni (fino a €500)" data-i18n="calc.insScreening">Truvi Guest Screening + Protezione danni (fino a €500) — €20,10 / prenotazione</option>
+              <option value="28.75" data-plan="Truvi Guest Screening + Protezione danni (fino a €50K)" data-i18n="calc.insDamage">Truvi Guest Screening + Protezione danni (fino a €50K) — €28,75 / prenotazione</option>
             </select>
+            <span class="note" data-i18n="calc.insTruviNote">Guest screening fornito da <a href="https://truvi.com" target="_blank" rel="noopener">Truvi</a>, incluso nei piani di protezione a pagamento.</span>
           </label>
         </div>
       </div>
@@ -458,6 +459,10 @@
         <tr>
           <td data-i18n="pdf.svc6">Completa gestione amministrativa: Licenza MTA, registrazione ospiti, Environmental Contribution</td>
           <td class="icon-cell"><i class="fa-solid fa-file-signature" aria-hidden="true"></i></td>
+        </tr>
+        <tr>
+          <td data-i18n="pdf.svc7">Guest screening Truvi e protezione danni con copertura assicurativa per ogni prenotazione coperta</td>
+          <td class="icon-cell"><i class="fa-solid fa-shield-halved" aria-hidden="true"></i></td>
         </tr>
       </table>
       </div>
