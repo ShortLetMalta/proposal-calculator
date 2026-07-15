@@ -668,7 +668,7 @@ function calculateProfit(){
   // timestamp in native print headers/footers, so we avoid setting the title
   // while printing to keep PDFs clean.
   if(!window.__ov_noTitle){
-    document.title = indirizzo1 ? `Prospetto: ${indirizzo1}` : DEFAULT_TITLE;
+    document.title = indirizzo1 ? I18N.t('calc.documentProspect', { address: indirizzo1 }) : I18N.t('calc.title');
   }
   baseDocumentTitle = document.title;
 
@@ -689,7 +689,10 @@ function calculateProfit(){
   const assicurazioneOption = assicurazioneSelect ? assicurazioneSelect.options[assicurazioneSelect.selectedIndex] : null;
   const assicurazioneValueRaw = assicurazioneOption ? parseFloat(assicurazioneOption.value || '0') : parseFloat(assicurazioneSelect?.value || '0');
   const assicurazionePerStay = Number.isFinite(assicurazioneValueRaw) ? Math.max(0, assicurazioneValueRaw) : 0;
-  const assicurazioneLabel = assicurazioneOption ? (assicurazioneOption.dataset.plan || assicurazioneOption.text || '') : '';
+  const assicurazioneKey = assicurazioneOption?.getAttribute('data-i18n');
+  const assicurazioneLabel = assicurazioneOption
+    ? (assicurazioneKey ? I18N.t(assicurazioneKey).split(' — ')[0] : (assicurazioneOption.dataset.plan || assicurazioneOption.text || ''))
+    : '';
 
   const autoCheckbox = $g('autoCalcPerSoggiorno');
   const autoCalc = autoCheckbox ? autoCheckbox.checked : true;
@@ -864,7 +867,7 @@ function calculateProfit(){
       'pulizie-assicurazione-ota': I18N.t('calc.basisCleanInsOta')
     };
     const basisLabel = basisLabels[basePmMode] || basisLabels['ota-only'];
-    const pmPctLabel = `${fmtPct(pPM)} + IVA ${fmtPct(ivaPmPct)} • ${basisLabel}`;
+    const pmPctLabel = `${fmtPct(pPM)} + ${I18N.t('calc.vatShort')} ${fmtPct(ivaPmPct)} • ${basisLabel}`;
     try{ window.postMessage({ type: 'ov:update', field: 'p6-pm-pct', value: pmPctLabel }, '*'); }catch(e){}
   }catch(e){ /* ignore */ }
   const costoPmNetto = basePM * (pPM/100);
@@ -1270,7 +1273,7 @@ function calculateProfit(){
 
   // 9) Output riepilogo principale
   $set('percOtaOutput', fmtPct(pOTA));             $set('outputCommissioniOta', fmtEUR(costoOTA));
-  $set('percPmOutput',  `${fmtPct(pPM)} + IVA ${fmtPct(ivaPmPct)}`); $set('outputCostoPm', fmtEUR(costoPmTotale));
+  $set('percPmOutput',  `${fmtPct(pPM)} + ${I18N.t('calc.vatShort')} ${fmtPct(ivaPmPct)}`); $set('outputCostoPm', fmtEUR(costoPmTotale));
   $set('outputIvaPm', fmtEUR(costoPmIva));
   $set('percIvaPmOutput', fmtPct(ivaPmPct));
   $set('outputPulizieOspite', fmtEUR(pulizieAnnuo));
@@ -1303,7 +1306,7 @@ function calculateProfit(){
       const parts = [];
       if(assicurazioneLabelResolved) parts.push(assicurazioneLabelResolved);
       if(assicurazionePerStay > 0){
-        parts.push(`€ ${assicurazionePerStay.toFixed(2).replace('.', ',')} / prenotazione`);
+        parts.push(`${fmtEUR(assicurazionePerStay)} / ${I18N.t('calc.perBooking')}`);
       }
       assicurazioneSub.textContent = parts.join(' • ');
     }else{
@@ -1922,7 +1925,7 @@ const prospectManager = (() => {
     let slugAdjustedMessage = '';
     if(resolvedSlug && resolvedSlug !== slug){
       slug = resolvedSlug;
-      slugAdjustedMessage = `Slug già utilizzato. Impostato automaticamente su "${slug}".`;
+      slugAdjustedMessage = I18N.t('calc.prospectSlugAdjusted', { slug: slug });
     }
     const propertySlug = getSelectedProperty();
     const propertyInfo = findProperty(propertySlug);

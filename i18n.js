@@ -175,6 +175,8 @@
       'archive.cardNoProsp':      'Nessun prospetto salvato.',
       'archive.cardEmpty':        'Nessuna proprietà salvata.',
       'archive.cardNoReg':        'Nessuna proprietà registrata.',
+      'archive.cardProspectOne':  '1 prospetto',
+      'archive.cardProspectMany': '{count} prospetti',
       'archive.quickAssign':      'Assegna a {name}',
       'archive.statusNoMatch':    'Nessun prospetto corrisponde alla ricerca "{term}".',
       'archive.cardProspFor':     'Prospetti per {name}',
@@ -183,6 +185,9 @@
 
       // calculator — top bar
       'calc.title':               'Calcolatore Prospetti · Eleva Malta',
+      'calc.documentProspect':    'Prospetto: {address}',
+      'calc.vatShort':            'IVA',
+      'calc.perBooking':          'per prenotazione',
       'calc.h1':                  'Simulatore di Utile Netto Annuale',
       'calc.formula':             'Formula: <b>Base fiscale proprietario = Ricavo Lordo Totale</b>, prima di commissioni e costi. Il PM si calcola sulla base selezionata sotto. Le commissioni OTA si applicano su <b>Affitti + Pulizie + Assicurazione</b>.',
 
@@ -597,6 +602,8 @@
       'archive.cardNoProsp':      'No saved prospect.',
       'archive.cardEmpty':        'No property saved.',
       'archive.cardNoReg':        'No property registered.',
+      'archive.cardProspectOne':  '1 prospect',
+      'archive.cardProspectMany': '{count} prospects',
       'archive.quickAssign':      'Assign to {name}',
       'archive.statusNoMatch':    'No prospect matches the search "{term}".',
       'archive.cardProspFor':     'Prospects for {name}',
@@ -605,6 +612,9 @@
 
       // calculator — top bar
       'calc.title':               'Proposal Calculator · Eleva Malta',
+      'calc.documentProspect':    'Prospect: {address}',
+      'calc.vatShort':            'VAT',
+      'calc.perBooking':          'per booking',
       'calc.h1':                  'Annual Net Profit Simulator',
       'calc.formula':             'Formula: <b>Owner tax base = Total Gross Revenue</b>, before commissions and costs. PM is calculated using the basis selected below. OTA commissions apply to <b>Rent + Cleaning + Insurance</b>.',
 

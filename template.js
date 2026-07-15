@@ -1,7 +1,8 @@
 (() => {
   // helpers locali
   const $ = id => document.getElementById(id);
-  const eur = n => (new Intl.NumberFormat('it-IT',{
+  const activeLocale = () => (window.I18N && I18N.locale() === 'it' ? 'it' : 'en');
+  const eur = n => (new Intl.NumberFormat(activeLocale() === 'it' ? 'it-IT' : 'en-MT',{
     style:'currency',
     currency:'EUR',
     minimumFractionDigits:2,
@@ -16,7 +17,7 @@
     if(!m || typeof m!=='object') return;
 
     const d = m?.dataISO ? new Date(m.dataISO) : new Date();
-    const dateStr = d.toLocaleDateString('it-IT',{day:'2-digit',month:'long',year:'numeric'});
+    const dateStr = d.toLocaleDateString(activeLocale() === 'it' ? 'it-IT' : 'en-GB',{day:'2-digit',month:'long',year:'numeric'});
     // Set all .date elements to the same formatted date (handles duplicated/misnumbered ids)
     try{ document.querySelectorAll('.date').forEach(el => { if(el) el.textContent = dateStr; }); }catch(_){ }
     // Backwards-compat: also set known ids if present
@@ -125,7 +126,7 @@
         const parts = [];
         if(label) parts.push(label);
         if(Number.isFinite(perStay) && perStay > 0){
-          parts.push(`€ ${perStay.toFixed(2).replace('.', ',')} / prenotazione`);
+          parts.push(`${eur(perStay)} / ${I18N.t('calc.perBooking')}`);
         }
         assSub.textContent = parts.join(' • ');
       }else{
@@ -136,13 +137,13 @@
     if($('p6-pm-pct')){
       const baseMode = m?.spese?.basePmMode || 'ota-only';
       const basisMap = {
-        'ota-only': 'su Fatturato Lordo − OTA',
-        'pulizie-ota': 'su Fatturato Lordo − Pulizie − OTA',
-        'pulizie-assicurazione-ota': 'su FatturatoLordo − Pulizie − Assicurazione − OTA'
+        'ota-only': I18N.t('calc.basisOta'),
+        'pulizie-ota': I18N.t('calc.basisCleanOta'),
+        'pulizie-assicurazione-ota': I18N.t('calc.basisCleanInsOta')
       };
       const basisLabel = basisMap[baseMode] || basisMap['ota-only'];
       // Fallback only (live calc posts the real IVA % via ov:update); 18% = Malta standard-rate default.
-      $('p6-pm-pct').textContent = `${pct(m?.spese?.pmPct ?? m?.percentualePm ?? 0)} + IVA 18% • ${basisLabel}`;
+      $('p6-pm-pct').textContent = `${pct(m?.spese?.pmPct ?? m?.percentualePm ?? 0)} + ${I18N.t('calc.vatShort')} 18% • ${basisLabel}`;
     }
     // Update Ring label (show monthly amount) but do NOT render a Ring box in Start-up
     try{

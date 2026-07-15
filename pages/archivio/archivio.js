@@ -379,12 +379,12 @@ const renderProperties = () => {
         <div class="property-meta">
           <span>${indirizzo}</span>
           <span>${owner}</span>
-          <span>${count === 1 ? '1 prospetto' : count + ' prospetti'}</span>
+          <span>${count === 1 ? I18N.t('archive.cardProspectOne') : I18N.t('archive.cardProspectMany', { count: count })}</span>
         </div>
         <div class="property-actions">
-          <a class="btn" href="${propertyLink}" target="_blank" rel="noopener">Apri scheda</a>
-          <a class="btn btn-secondary" href="${createLink}" target="_blank" rel="noopener">Crea prospetto</a>
-          <button class="btn btn-danger" type="button" data-action="delete-property" data-slug="${escapeHtml(item.slug)}" data-prospect-count="${count}">Elimina</button>
+          <a class="btn" href="${propertyLink}" target="_blank" rel="noopener">${I18N.t('archive.btnOpenProperty')}</a>
+          <a class="btn btn-secondary" href="${createLink}" target="_blank" rel="noopener">${I18N.t('property.btnNewProspect')}</a>
+          <button class="btn btn-danger" type="button" data-action="delete-property" data-slug="${escapeHtml(item.slug)}" data-prospect-count="${count}">${I18N.t('common.delete')}</button>
         </div>
       </article>
     `;
@@ -398,7 +398,7 @@ const updatePropertyFilter = () => {
   const select = $('propertyFilter');
   if(!select) return;
   const current = select.value;
-  select.innerHTML = '<option value="">Tutte le proprietà</option>' + properties.map(item => {
+  select.innerHTML = `<option value="">${I18N.t('archive.optionAll')}</option>` + properties.map(item => {
     const label = escapeHtml(item.nome || item.slug);
     const sel = item.slug === selectedProperty ? ' selected' : '';
     return `<option value="${escapeHtml(item.slug)}"${sel}>${label}</option>`;
@@ -515,7 +515,7 @@ const handlePropertyDelete = async (slug, prospectCount = 0) => {
   if(!slugTrim) return;
   const count = Number.isFinite(+prospectCount) ? +prospectCount : 0;
   const prospectsNote = count > 0
-    ? `\n\nAttenzione: ${count === 1 ? '1 prospetto' : count + ' prospetti'} collegati verranno spostati nella sezione "Prospetti senza proprietà".`
+    ? I18N.t(count === 1 ? 'archive.detachWarnOne' : 'archive.detachWarnMany', { count: count })
     : '';
   const ok = window.confirm(I18N.t('archive.propertyDelConfirm', { slug: slugTrim }) + prospectsNote);
   if(!ok) return;

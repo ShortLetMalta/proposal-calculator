@@ -293,7 +293,7 @@ const renderProspects = (items = []) => {
   const container = $('propertyProspects');
   if(!container) return;
   if(!items.length){
-    container.innerHTML = '<div class="archive-empty">Nessun prospetto collegato.</div>';
+    container.innerHTML = `<div class="archive-empty">${I18N.t('property.prospectNoLinked')}</div>`;
     applyApiToLinks(container);
     return;
   }
@@ -315,18 +315,18 @@ const renderProspects = (items = []) => {
         </header>
         <div class="prospect-meta">
           <div>
-            <span class="label">Indirizzo</span>
+            <span class="label">${I18N.t('archive.cardAddress')}</span>
             <span>${indirizzoHtml || '--'}</span>
           </div>
           <div>
-            <span class="label">Aggiornato</span>
+            <span class="label">${I18N.t('archive.cardUpdated')}</span>
             <span>${updated}</span>
           </div>
         </div>
         <div class="prospect-actions">
-          <a class="btn" href="${calcUrl}" target="_blank" rel="noopener">Apri nel calcolatore</a>
-          <a class="btn btn-secondary" href="${printUrl}" target="_blank" rel="noopener">Apri e stampa</a>
-          <button class="btn btn-danger" type="button" data-action="delete-prospect" data-slug="${slugEsc}">Elimina</button>
+          <a class="btn" href="${calcUrl}" target="_blank" rel="noopener">${I18N.t('archive.cardCalc')}</a>
+          <a class="btn btn-secondary" href="${printUrl}" target="_blank" rel="noopener">${I18N.t('archive.cardPrint')}</a>
+          <button class="btn btn-danger" type="button" data-action="delete-prospect" data-slug="${slugEsc}">${I18N.t('common.delete')}</button>
         </div>
       </article>
     `;
