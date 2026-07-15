@@ -79,6 +79,13 @@ function handleOwnerTaxModeChange(){
   calculateProfit();
 }
 
+function handleElevaTaxModeChange(){
+  const mode = document.getElementById('elevaTaxMode')?.value || 'self-employed';
+  const rate = document.getElementById('aliquotaCorporateMalta');
+  if(rate) rate.value = mode === 'malta-ltd' ? '35' : '25';
+  calculateProfit();
+}
+
 // Eleva Malta production API. It can still be overridden with
 // window.CALCOLATORE_API or the ?api=/#api= URL parameter.
 const DEFAULT_PROD_API = 'https://proposal-calculator-v5y7.onrender.com';
@@ -1305,13 +1312,11 @@ function calculateProfit(){
   }
   $set('outputUtileNetto', fmtEUR(utileAnn));      $set('outputUtileMensile', fmtEUR(utileMese));
 
-  // 10) Eleva Malta (Malta Ltd) — stima corporate tax. "OV"/"PM" ids below are
-  // legacy internal names carried over from the Owner Value original build.
-  // Malta corporate tax is a flat 35%, but the full imputation system refunds
-  // 6/7ths of tax paid on trading-income dividends once distributed to
-  // shareholders, netting an effective ~5%. Default here assumes the refund is
-  // claimed and received — in practice it lags behind the distribution.
-  const corporateMalta = ($g('aliquotaCorporateMalta') ? num('aliquotaCorporateMalta') : 5) / 100;
+  // 10) Eleva tax reserve. The current self-employed structure defaults to a
+  // 25% editable reserve; Malta Ltd uses the 35% headline corporate rate.
+  // Class 2 SSC and any later shareholder refund are deliberately excluded.
+  const elevaTaxMode = $g('elevaTaxMode')?.value || 'self-employed';
+  const corporateMalta = ($g('aliquotaCorporateMalta') ? num('aliquotaCorporateMalta') : 25) / 100;
   const ovTasse = costoPmNetto * corporateMalta;
   const ovNetto = costoPmNetto - ovTasse;
   const ovNettoMens = ovNetto / 12;

@@ -379,13 +379,19 @@
         <!-- Riepilogo Eleva -->
         <div class="ov-admin">
           <div class="grp">
-            <label><span data-i18n="calc.ovIres">Aliquota Corporate Tax Malta (Ltd, effettiva %)</span><input type="number" id="aliquotaCorporateMalta" value="5" min="0" max="35" step="0.1" oninput="calculateProfit()"></label>
+            <label><span data-i18n="calc.elevaTaxMode">Struttura fiscale Eleva</span>
+              <select id="elevaTaxMode" onchange="handleElevaTaxModeChange()">
+                <option value="self-employed" data-i18n="calc.elevaTaxSelf">Self-employed individual — riserva fiscale 25% (default)</option>
+                <option value="malta-ltd" data-i18n="calc.elevaTaxLtd">Malta Ltd — corporate tax headline 35%</option>
+              </select>
+            </label>
+            <label><span data-i18n="calc.ovIres">Aliquota fiscale Eleva stimata (%)</span><input type="number" id="aliquotaCorporateMalta" value="25" min="0" max="100" step="0.1" oninput="calculateProfit()"></label>
           </div>
           <div class="row"><span data-i18n="calc.ovComm">Commissione Eleva (annua)</span><strong id="outputPmLordo">€ 0,00</strong></div>
-          <div class="row"><span data-i18n="calc.ovTasse">Tasse Eleva (stima corporate tax)</span><strong class="bad" id="outputPmTasse">€ 0,00</strong></div>
+          <div class="row"><span data-i18n="calc.ovTasse">Tasse Eleva (stima)</span><strong class="bad" id="outputPmTasse">€ 0,00</strong></div>
           <div class="row"><span data-i18n="calc.ovNettoAnno"><b>Netto Eleva (annuo)</b></span><strong style="color:green" id="outputPmNetto">€ 0,00</strong></div>
           <div class="row"><span data-i18n="calc.ovNettoMese">Netto Eleva (mensile)</span><strong id="outputPmNettoMensile">€ 0,00</strong></div>
-          <div class="note" data-i18n="calc.ovNettoNote">Malta applica corporate tax 35% con full imputation: refund 6/7 su utili da attività commerciale distribuiti come dividendi → carico effettivo ~5%. Il default qui assume rifusione richiesta e ottenuta; nella realtà la rifusione arriva dopo la distribuzione dei dividendi, con un ritardo temporale. Verifica con il commercialista maltese la struttura societaria effettiva.</div>
+          <div class="note" data-i18n="calc.ovNettoNote">Self-employed: riserva modificabile basata sulle aliquote personali progressive; i contributi Class 2 non sono inclusi. Malta Ltd: il 35% è la corporate tax headline; l'eventuale shareholder refund non è anticipato nel calcolo.</div>
         </div>
       </div>
     </div>

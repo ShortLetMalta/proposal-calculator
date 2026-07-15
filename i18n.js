@@ -359,12 +359,15 @@
       'calc.reportNote':          'Il report (Embed 2) si aggiorna anche in automatico ad ogni modifica.',
 
       // Eleva admin
-      'calc.ovIres':              'Aliquota Corporate Tax Malta (Ltd, effettiva %)',
+      'calc.elevaTaxMode':        'Struttura fiscale Eleva',
+      'calc.elevaTaxSelf':        'Self-employed individual — riserva fiscale 25% (default)',
+      'calc.elevaTaxLtd':         'Malta Ltd — corporate tax headline 35%',
+      'calc.ovIres':              'Aliquota fiscale Eleva stimata (%)',
       'calc.ovComm':              'Commissione Eleva (annua)',
-      'calc.ovTasse':             'Tasse Eleva (stima corporate tax)',
+      'calc.ovTasse':             'Tasse Eleva (stima)',
       'calc.ovNettoAnno':         'Netto Eleva (annuo)',
       'calc.ovNettoMese':         'Netto Eleva (mensile)',
-      'calc.ovNettoNote':         'Malta applica corporate tax 35% con full imputation: refund 6/7 su utili da attività commerciale distribuiti come dividendi → carico effettivo ~5%. Il default qui assume rifusione richiesta e ottenuta; nella realtà arriva dopo la distribuzione, con un ritardo temporale. Verifica con il commercialista maltese la struttura societaria effettiva.',
+      'calc.ovNettoNote':         'Self-employed: riserva modificabile basata sulle aliquote personali progressive; i contributi Class 2 non sono inclusi. Malta Ltd: il 35% è la corporate tax headline; l\'eventuale shareholder refund non è anticipato nel calcolo.',
 
       // toolbar / print
       'calc.btnPrint':            'Stampa / PDF',
@@ -770,12 +773,15 @@
       'calc.reportNote':          'The report (Embed 2) also updates automatically on every change.',
 
       // Eleva admin
-      'calc.ovIres':              'Malta Corporate Tax Rate (Ltd, effective %)',
+      'calc.elevaTaxMode':        'Eleva tax structure',
+      'calc.elevaTaxSelf':        'Self-employed individual — 25% tax reserve (default)',
+      'calc.elevaTaxLtd':         'Malta Ltd — 35% headline corporate tax',
+      'calc.ovIres':              'Estimated Eleva tax rate (%)',
       'calc.ovComm':              'Eleva Commission (annual)',
-      'calc.ovTasse':             'Eleva Taxes (corporate tax estimate)',
+      'calc.ovTasse':             'Eleva Taxes (estimate)',
       'calc.ovNettoAnno':         'Eleva Net (annual)',
       'calc.ovNettoMese':         'Eleva Net (monthly)',
-      'calc.ovNettoNote':         'Malta charges 35% corporate tax with full imputation: a 6/7 refund on trading-income dividends brings the effective rate to ~5%. This default assumes the refund is claimed and received — in practice it lags behind the distribution. Confirm the actual company structure with a Malta accountant.',
+      'calc.ovNettoNote':         'Self-employed: editable reserve based on progressive personal rates; Class 2 contributions are not included. Malta Ltd: 35% is the headline corporate tax; any shareholder refund is not anticipated in this calculation.',
 
       // toolbar / print
       'calc.btnPrint':            'Print / PDF',
