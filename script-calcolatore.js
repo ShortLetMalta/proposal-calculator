@@ -1294,6 +1294,9 @@ function calculateProfit(){
   toggleRow('outputUtileMensile', utileMese);
   $set('percCedolareOutput', fmtPct(pCed));        $set('outputImposta', fmtEUR(imposta));
   $set('p6-cedolare-percent', fmtPct(pCed));       $set('p6-cedolare', fmtEUR(imposta));
+  const ownerTaxPdfRow = $g('p6-cedolare-row');
+  if(ownerTaxPdfRow) ownerTaxPdfRow.style.display = imposta > 0 ? '' : 'none';
+  try{ window.postMessage({ type: 'ov:update', field: 'p6-cedolare', value: fmtEUR(imposta), amount: imposta }, '*'); }catch(e){}
   $set('p6-ota-percent', fmtPct(pOTA));
   $set('p6-assicurazione', fmtEUR(assicurazioneAnnuo));
   const assicurazioneRow = $g('p6-assicurazione-row');
@@ -1391,6 +1394,8 @@ function calculateProfit(){
       pmIvaPct: ivaPmPct,
       pmPct: pPM,
       basePmMode,
+      ownerTax: imposta,
+      ownerTaxPct: pCed,
       unaTantum: sicurezzaTotale,
       sicurezza:{
         ringSetup,

@@ -134,6 +134,11 @@
       }
     }
     if($('p6-pm'))      $('p6-pm').textContent      = eur(m?.spese?.pm ?? 0);
+    const ownerTax = Number(m?.spese?.ownerTax ?? 0) || 0;
+    if($('p6-cedolare')) $('p6-cedolare').textContent = eur(ownerTax);
+    if($('p6-cedolare-percent')) $('p6-cedolare-percent').textContent = pct(m?.spese?.ownerTaxPct ?? 0);
+    const ownerTaxRow = $('p6-cedolare-row');
+    if(ownerTaxRow) ownerTaxRow.style.display = ownerTax > 0 ? '' : 'none';
     if($('p6-pm-pct')){
       const baseMode = m?.spese?.basePmMode || 'ota-only';
       const basisMap = {
@@ -305,9 +310,14 @@
               if(row){ row.style.display = (Number.isFinite(n) && n > 0) ? '' : 'none'; }
             }catch(_){ }
           }
+          if(d.field === 'p6-cedolare'){
+            const n = Number(d.amount);
+            const row = document.getElementById('p6-cedolare-row');
+            if(row) row.style.display = (Number.isFinite(n) && n > 0) ? '' : 'none';
+          }
         }catch(_){ }
         try{
-          if(['p6-ring-annual','p6-ring-setup','p6-una','p6-kit','p6-ota','p6-extras-container','p6-kit-sicurezza'].includes(d.field)){
+          if(['p6-ring-annual','p6-ring-setup','p6-una','p6-kit','p6-ota','p6-cedolare','p6-extras-container','p6-kit-sicurezza'].includes(d.field)){
             recalculateTotalCosti();
             try{ recalculateTotaleStartup(); }catch(_){ }
           }
