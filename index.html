@@ -220,7 +220,7 @@
             <input type="number" id="speseAcquaTari" value="0.00" min="0" step="0.01" oninput="calculateProfit()">
           </label>
           <label><span data-i18n="calc.s3MtaLicence">Licenza MTA (mensilizzata)<br> (€/mese)</span>
-            <input type="number" id="speseMtaLicenza" value="10.83" min="0" step="0.01" oninput="calculateProfit()">
+            <input type="number" id="speseMtaLicenza" value="0" min="0" step="0.01" oninput="calculateProfit()">
           </label>
         </div>
         <p class="note" data-i18n="calc.s3MtaLicenceNote">Licenza MTA: ~€130/anno per unità a Malta, mensilizzata qui su 12 mesi. Verifica l'importo esatto e la cadenza di rinnovo sul sito della Malta Tourism Authority.</p>
@@ -239,12 +239,12 @@
           </label>
           <label><span data-i18n="calc.s4TaxMode">Regime fiscale del proprietario</span>
             <select id="ownerTaxMode" onchange="handleOwnerTaxModeChange()">
-              <option value="article-31d" data-i18n="calc.s4TaxArticle31d">Article 31D — imposta finale 15% sul lordo (default)</option>
-              <option value="custom-gross" data-i18n="calc.s4TaxCustom">Aliquota personalizzata sul lordo</option>
+              <option value="article-31d" data-i18n="calc.s4TaxArticle31d">Article 31D — imposta finale 15% sul lordo</option>
+              <option value="custom-gross" selected data-i18n="calc.s4TaxCustom">Aliquota personalizzata sul lordo (default 0%)</option>
             </select>
           </label>
           <label><span data-i18n="calc.s4Cedolare">Aliquota fiscale proprietario sul lordo (%)</span>
-            <input type="number" id="percentualeCedolare" value="15" min="0" max="100" step="0.1" oninput="calculateProfit()">
+            <input type="number" id="percentualeCedolare" value="0" min="0" max="100" step="0.1" oninput="calculateProfit()">
           </label>
         </div>
         <div style="margin-top:8px;">

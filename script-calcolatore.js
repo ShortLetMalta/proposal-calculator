@@ -821,7 +821,7 @@ function calculateProfit(){
   // 4) Commissioni
   const pOTA = readPct('percentualeOta', 18);
   const pPM  = readPct('percentualePm', 30);
-  const pCed = readPct('percentualeCedolare', 15);
+  const pCed = readPct('percentualeCedolare', 0);
   // VAT on Eleva's management commission invoiced to the owner. It defaults to
   // Malta's 18% standard rate but remains editable, including an explicit 0%.
   const ivaPmPct = readPct('percentualeIvaPm', 18);
