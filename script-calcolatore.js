@@ -48,17 +48,18 @@
 
 /* ============= Helpers ============= */
 const DEFAULT_TITLE = document.title || 'Proposal Calculator · Eleva Malta';
-// Format currency with decimals (always show cents)
-const fmtEUR = n => (new Intl.NumberFormat('it-IT',{
+const activeNumberLocale = () => (window.I18N && I18N.locale() === 'it' ? 'it-IT' : 'en-MT');
+// Format currency with decimals (always show cents) in the active language.
+const fmtEUR = n => (new Intl.NumberFormat(activeNumberLocale(),{
   style: 'currency',
   currency: 'EUR',
   minimumFractionDigits: 2,
   maximumFractionDigits: 2
 })).format(Number.isFinite(+n) ? +n : 0);
-// Percentuali con due decimali, formato it-IT con virgola
+// Percentages with two decimals in the active language.
 const fmtPct = n => {
   const value = Number.isFinite(+n) ? +n : 0;
-  return `${value.toFixed(2).replace('.', ',')}%`;
+  return `${new Intl.NumberFormat(activeNumberLocale(), { minimumFractionDigits: 2, maximumFractionDigits: 2 }).format(value)}%`;
 };
 const $g = id => document.getElementById(id);
 const $set = (id,v)=>{ const el=$g(id); if(el) el.textContent = v; };

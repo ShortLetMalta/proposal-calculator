@@ -9,6 +9,26 @@
     maximumFractionDigits:2
   })).format(Number.isFinite(+n)?+n:0);
   const pct = n => `${Math.round(+n||0)}%`;
+  const parseMoney = value => {
+    const raw = String(value ?? '').replace(/[^0-9,.-]/g, '');
+    if(!raw) return 0;
+    const comma = raw.lastIndexOf(',');
+    const dot = raw.lastIndexOf('.');
+    let normalized = raw;
+    if(comma >= 0 && dot >= 0){
+      normalized = comma > dot
+        ? raw.replace(/\./g, '').replace(',', '.')
+        : raw.replace(/,/g, '');
+    }else if(comma >= 0){
+      const decimals = raw.length - comma - 1;
+      normalized = decimals === 2 ? raw.replace(',', '.') : raw.replace(/,/g, '');
+    }else if(dot >= 0){
+      const decimals = raw.length - dot - 1;
+      normalized = decimals === 2 ? raw : raw.replace(/\./g, '');
+    }
+    const number = Number.parseFloat(normalized);
+    return Number.isFinite(number) ? number : 0;
+  };
   const CACHE_KEY = 'elevamalta:model';
   const DEFAULT_PROD_API = 'https://proposal-calculator-v5y7.onrender.com';
   const LOCAL_API = 'http://localhost:3001';
@@ -348,13 +368,6 @@
       }
       if(!startupInfo) return;
 
-      const parseMoney = (txt) => {
-        if(!txt) return 0;
-        const s = txt.replace(/[^0-9,,-.]/g,'').replace(/\./g,'').replace(',', '.');
-        const n = parseFloat(s);
-        return Number.isFinite(n) ? n : 0;
-      };
-
       let total = 0;
       const bigEls = startupInfo.querySelectorAll('.box.expense-box .big');
       for(const el of bigEls){
@@ -374,12 +387,6 @@
   // Ricalcolo totale spese basato su quanto visualizzato in UI
   function recalculateTotalCosti(){
     try{
-      const parseMoney = (txt) => {
-        if(!txt) return 0;
-        const s = txt.replace(/[^0-9,,-.]/g,'').replace(/\./g,'').replace(',', '.');
-        const n = parseFloat(s);
-        return Number.isFinite(n) ? n : 0;
-      };
       // Only count items that are part of the annual "Previsioni di Spesa" page.
       // Exclude known start-up items (Kit Sicurezza, Ring setup and extras injected into #p6-extras-container).
       const startupIds = new Set(['p6-una','p6-ring-setup','p6-kit-sicurezza']);
